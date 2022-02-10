@@ -99,6 +99,11 @@ body {
   padding-bottom: 11px;
 }
 
+.cancel {
+  cursor: pointer;
+  color: var(--accent);
+}
+
 .task {
   padding: 0 17px;
 }

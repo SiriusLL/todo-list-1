@@ -5,7 +5,7 @@ function TaskCard() {
 
   const [newTask, setNewTask] = useState();
 
-  const [listData, setListData] = useState([]);
+  const [listData, setListData] = useState(["a", "b", "c"]);
 
   const toggleTaskForm = () => {
     addTask ? setAddTask(false) : setAddTask(true);
@@ -21,7 +21,11 @@ function TaskCard() {
     toggleTaskForm();
   };
 
-  console.log(addTask);
+  const cancelTask = (i) => {
+    console.log("you are here");
+    console.log("i", i);
+    setListData(listData.filter((task) => task !== listData[i]));
+  };
 
   return (
     <div className="task-card">
@@ -35,7 +39,17 @@ function TaskCard() {
             listData.map((task, i) => {
               return (
                 <div className="task-row" key={i}>
-                  <p>X</p>
+                  <p
+                    className="cancel"
+                    type="button"
+                    onClick={() =>
+                      setListData(
+                        listData.filter((task) => task !== listData[i])
+                      )
+                    }
+                  >
+                    X
+                  </p>
                   <p className="task">{task}</p>
                   <input className="check-box" type="checkbox" />
                 </div>
@@ -48,6 +62,7 @@ function TaskCard() {
       {addTask && (
         <form className="add-task-form" onSubmit={(e) => handleSubmit(e)}>
           <input
+            autoFocus
             type="text"
             placeholder="enter a task"
             name="newTask"
