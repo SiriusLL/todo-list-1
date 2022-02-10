@@ -108,10 +108,21 @@ body {
   padding: 0 17px;
 }
 
+.task-complete {
+  padding: 0 17px;
+  color: grey;
+  text-decoration: line-through;
+}
+
 input[type="checkbox"] .check-box {
   border: 1px solid var(--border);
   background-color: var(--text-primary);
 }
+
+/* .check-box-checked :checked {
+  border: 1px solid var(--border);
+  background-color: var(--text-primary);
+} */
 
 .add-task-form {
   display: flex;
