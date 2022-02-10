@@ -1,3 +1,5 @@
+import { useState } from "react";
+import TaskCard from "./components/TaskCard";
 import "./index.css";
 
 function App() {
@@ -6,20 +8,7 @@ function App() {
       <header>
         <h1>Todo List</h1>
       </header>
-      <div className="task-card">
-        <h2>Task Name</h2>
-        <p className="divider">
-          <span>List</span>
-        </p>
-        <form className="todo-form">
-          <div className="check-complete">
-            <p>X</p>
-            <p>placeholderplaceholder</p>
-            <input className="check-box" type="checkbox" />
-          </div>
-        </form>
-        <button>Add</button>
-      </div>
+      <TaskCard />
     </div>
   );
 }

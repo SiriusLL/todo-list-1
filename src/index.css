@@ -76,7 +76,6 @@ body {
 
 .divider span {
   padding: 0 10px;
-  /* border: 1px solid var(--text-primary); */
   box-shadow: 0 0 8px var(--text-primary);
   background-color: var(--form-bg);
   border-radius: 5px;
@@ -90,10 +89,27 @@ body {
 .check-complete {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
 }
 
-.check-box {
+input[type="checkbox"] .check-box {
   border: 1px solid var(--border);
   background-color: var(--text-primary);
+}
+
+.add-task-form {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3px;
+}
+
+.add-task-from input[type="test"] {
+  background: var(--form-bg);
+}
+
+.add-task-form button {
+  background-color: var(--from-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  padding: 3px;
 }
