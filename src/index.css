@@ -22,11 +22,78 @@ body {
   --form-bg: #f4c4ff;
 }
 
-[data-theme="dark"] {
+:root {
   --background: #000;
   --text-primary: #f4c4ff;
   --text-secondary: #8e05c2;
   --accent: #9e4b9e;
   --border: #9aeefc;
   --form-bg: #333;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  background-color: var(--background);
+  color: var(--text-primary);
+  height: 100vh;
+  /* width: 100%; */
+  transition: all 0.5;
+}
+
+.app header h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+}
+
+.task-card {
+  min-width: 300px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  box-shadow: 0 0 16px var(--border);
+  padding: 10px;
+  margin: auto;
+  background-color: var(--form-bg);
+}
+
+.task-card h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.task-card .divider {
+  border-bottom: 1px solid var(--text-primary);
+  width: 100%;
+  text-align: center;
+  line-height: 0.1rem;
+  margin: 2rem 0;
+}
+
+.divider span {
+  padding: 0 10px;
+  /* border: 1px solid var(--text-primary); */
+  box-shadow: 0 0 8px var(--text-primary);
+  background-color: var(--form-bg);
+  border-radius: 5px;
+}
+
+.todo-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.check-complete {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+
+.check-box {
+  border: 1px solid var(--border);
+  background-color: var(--text-primary);
 }
