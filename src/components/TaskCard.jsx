@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ReactComponent as CloseOutlineIcon } from "../images/close-outline.svg";
+import { ReactComponent as AddSolidIcon } from "../images/add-solid.svg";
 
 function TaskCard() {
   const [addTask, setAddTask] = useState(false);
@@ -6,9 +8,9 @@ function TaskCard() {
   const [newTask, setNewTask] = useState();
 
   const [listData, setListData] = useState([
-    { task: "a", complete: "task", Checked: "checked" },
-    { task: "b", complete: "task", Checked: "checked" },
-    { task: "c", complete: "task-complete", checked: "checked" },
+    { task: "tomatos", complete: "task-complete", Checked: "checked" },
+    { task: "bacon", complete: "task-complete", Checked: "checked" },
+    { task: "mushrooms", complete: "task-complete", checked: "checked" },
   ]);
 
   // const [checked, setChecked] = useState({});
@@ -20,6 +22,10 @@ function TaskCard() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(newTask);
+    if (!e.target[0].value) {
+      toggleTaskForm();
+      return;
+    }
 
     setListData((prev) => [
       ...prev,
@@ -71,7 +77,10 @@ function TaskCard() {
                       )
                     }
                   >
-                    X
+                    <CloseOutlineIcon
+                      title="Close Outline Icon"
+                      className="cancel-icon"
+                    />
                   </p>
                   <p className={`${task.complete}`}>{task.task}</p>
                   {task.complete === "task-complete" ? (
@@ -94,8 +103,8 @@ function TaskCard() {
         </div>
       </form>
       {!addTask && (
-        <button onClick={toggleTaskForm} autoFocus>
-          ++
+        <button className="add-icon-button" onClick={toggleTaskForm} autoFocus>
+          <AddSolidIcon name="Add Solid Icon" className="add-solid-icon" />
         </button>
       )}
       {newTask}
@@ -103,13 +112,16 @@ function TaskCard() {
         <form className="add-task-form" onSubmit={(e) => handleSubmit(e)}>
           <input
             autoFocus
+            className="add-task-input"
             type="text"
             placeholder="enter a task"
             name="newTask"
             onChange={(e) => setNewTask(e.target.value)}
             value={newTask}
           />
-          <button type="submit" value="submit" />
+          <button type="submit" value="submit">
+            Add Task
+          </button>
         </form>
       )}
     </div>

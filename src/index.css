@@ -20,6 +20,8 @@ body {
   --accent: #9aeefc;
   --border: #333;
   --form-bg: #f4c4ff;
+  --accent-svg: invert(91%) sepia(91%) saturate(2457%) hue-rotate(164deg)
+    brightness(101%) contrast(98%);
 }
 
 :root {
@@ -29,6 +31,8 @@ body {
   --accent: #9e4b9e;
   --border: #9aeefc;
   --form-bg: #333;
+  --accent-svg: invert(42%) sepia(11%) saturate(3829%) hue-rotate(254deg)
+    brightness(81%) contrast(80%);
 }
 
 .app {
@@ -100,8 +104,13 @@ body {
 }
 
 .cancel {
+  /* cursor: pointer; */
+}
+
+.cancel-icon {
+  filter: var(--accent-svg);
+  height: 24px;
   cursor: pointer;
-  color: var(--accent);
 }
 
 .task {
@@ -130,8 +139,17 @@ input[type="checkbox"] .check-box {
   margin-top: 3px;
 }
 
-.add-task-from input[type="test"] {
+/* .add-task-from input[type="text"] {
   background: var(--form-bg);
+  border: 1px solid red;
+} */
+
+.add-task-input {
+  background: var(--form-bg);
+  color: var(--primary-text);
+  border: 0px;
+  padding: 3px;
+  box-shadow: 0 0 8px var(--border);
 }
 
 .add-task-form button {
@@ -140,4 +158,15 @@ input[type="checkbox"] .check-box {
   border: 0px;
   box-shadow: 0 0 8px var(--border);
   padding: 3px;
+}
+
+.add-icon-button {
+  border: 0px;
+  background-color: var(--form-bg);
+}
+
+.add-solid-icon {
+  filter: invert(94%) sepia(7%) saturate(1373%) hue-rotate(87deg)
+    brightness(97%) contrast(93%);
+  height: 24px;
 }
