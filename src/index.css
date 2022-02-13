@@ -133,37 +133,12 @@ input[type="checkbox"] .check-box {
   /* opacity: 0; */
   filter: invert(100%) hue-rotate(18deg) brightness(1.7);
 }
-.checked {
-  /* opacity: 0; */
-}
-
-.un-checked {
-  color: red !important;
-  /* opacity: 0; */
-}
-
-/* .toggle-checked {
-  color: green;
-}
-
-.toggle-check-control:checked ~ .toggle-checked {
-  color: red;
-} */
-/* .check-box-checked :checked {
-  border: 1px solid var(--border);
-  background-color: var(--text-primary);
-} */
 
 .add-task-form {
   display: flex;
   justify-content: space-between;
   margin-top: 3px;
 }
-
-/* .add-task-from input[type="text"] {
-  background: var(--form-bg);
-  border: 1px solid red;
-} */
 
 .add-task-input {
   background: var(--form-bg);
