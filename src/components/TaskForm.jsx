@@ -3,7 +3,7 @@ import CheckInput from "./CheckInput";
 import { ReactComponent as CloseOutlineIcon } from "../images/close-outline.svg";
 
 function TaskForm({ handleChecked, listData, setListData, cardIndex }) {
-  console.log("p", cardIndex);
+  // console.log("p", cardIndex);
 
   const cancelTask = (i) => {
     const newListData = [...listData];
@@ -19,7 +19,8 @@ function TaskForm({ handleChecked, listData, setListData, cardIndex }) {
     <>
       <form className="todo-form">
         <div className="check-complete">
-          {listData &&
+          {/* {listData[cardIndex].list.name} */}
+          {listData[cardIndex].list &&
             listData[cardIndex].list.map((task, i) => {
               console.log("filter", listData[cardIndex]);
               return (

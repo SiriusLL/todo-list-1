@@ -36,13 +36,13 @@ function App() {
     setCardTitle("");
     toggleListForm();
   };
-  console.log("pizza", listData);
 
-  console.log("cardtitle", cardTitle);
   return (
     <div className="app">
       <nav>
-        <div>{"   . "}</div>
+        <div>
+          <AddSolidIcon className="centerNav" />
+        </div>
         <h1>Todo List</h1>
         <AddSolidIcon className="add-solid-icon-nav" onClick={toggleListForm} />
       </nav>

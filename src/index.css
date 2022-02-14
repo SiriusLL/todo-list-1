@@ -59,6 +59,11 @@ body {
   box-shadow: 0 0 16px var(--border);
 }
 
+.centerNav {
+  opacity: 0;
+  height: 36px;
+}
+
 .new-list-input {
   display: flex;
   justify-content: center;
@@ -82,9 +87,22 @@ body {
   background-color: var(--form-bg);
 }
 
+.task-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+}
+
+.listCenter {
+  opacity: 0;
+  height: 24px;
+}
+
 .task-card h2 {
   display: flex;
   justify-content: center;
+  flex: 1;
 }
 
 .task-card .divider {
