@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { ReactComponent as AddSolidIcon } from "../images/add-solid.svg";
+import AddInput from "./AddInput";
 
-function CardForm({ listData, setListData }) {
+function CardForm({ listData, setListData, cardIndex }) {
   const [newTask, setNewTask] = useState();
   const [addTask, setAddTask] = useState(false);
 
@@ -17,10 +18,14 @@ function CardForm({ listData, setListData }) {
       return;
     }
 
-    setListData((prev) => [
-      ...prev,
-      { task: newTask, complete: "task", checked: "checked" },
-    ]);
+    const newListData = [...listData];
+    newListData[cardIndex].list.push({
+      task: newTask,
+      complete: "task",
+      checked: false,
+    });
+
+    setListData((prev) => newListData);
     console.log(listData);
     setNewTask("");
     toggleTaskForm();
@@ -45,7 +50,7 @@ function CardForm({ listData, setListData }) {
             onChange={(e) => setNewTask(e.target.value)}
             value={newTask}
           />
-          <button type="submit" value="submit">
+          <button className="form-button" type="submit" value="submit">
             Add Task
           </button>
         </form>

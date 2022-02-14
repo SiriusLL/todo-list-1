@@ -3,38 +3,33 @@ import React, { useState } from "react";
 import CardForm from "./CardForm";
 import TaskForm from "./TaskForm";
 
-function TaskCard() {
-  const [listData, setListData] = useState([
-    { task: "tomatos", complete: "task-complete", checked: true },
-    { task: "bacon", complete: "task-complete", checked: true },
-    { task: "mushrooms", complete: "task-complete", checked: true },
-  ]);
-
+function TaskCard({ listData, setListData, list, listName, cardIndex }) {
+  console.log("h", listData);
   // const [checked, setChecked] = useState({});
 
   const cancelTask = (i) => {
     console.log("you are here");
     console.log("i", i);
-    setListData(listData.filter((task) => task !== listData[i]));
+    setListData(listData.list.filter((task) => task !== listData[i]));
   };
 
   const handleChecked = (e, i) => {
     const newListData = [...listData];
 
     if (e.target.checked) {
-      newListData[i].complete = "task-complete";
-      newListData[i].checked = true;
+      newListData[cardIndex].list[i].complete = "task-complete";
+      newListData[cardIndex].list[i].checked = true;
       setListData((prev) => newListData);
       return;
     }
-    newListData[i].complete = "task";
-    newListData[i].checked = false;
+    newListData[cardIndex].list[i].complete = "task";
+    newListData[cardIndex].list[i].checked = false;
     setListData((prev) => newListData);
   };
 
   return (
     <div className="task-card">
-      <h2>Task Name</h2>
+      <h2>{listName}</h2>
       <p className="divider">
         <span>List</span>
       </p>
@@ -42,9 +37,14 @@ function TaskCard() {
         handleChecked={handleChecked}
         listData={listData}
         setListData={setListData}
+        cardIndex={cardIndex}
       />
       {/* {newTask} */}
-      <CardForm listData={listData} setListData={setListData} />
+      <CardForm
+        listData={listData}
+        setListData={setListData}
+        cardIndex={cardIndex}
+      />
     </div>
   );
 }
