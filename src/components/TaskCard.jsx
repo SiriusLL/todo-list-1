@@ -58,12 +58,14 @@ function TaskCard({ listData, setListData, list, listName, cardIndex, id }) {
         listData={listData}
         setListData={setListData}
         cardIndex={cardIndex}
+        id={id}
       />
       {/* {newTask} */}
       <CardForm
         listData={listData}
         setListData={setListData}
         cardIndex={cardIndex}
+        id={id}
       />
     </div>
   );

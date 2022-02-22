@@ -43,4 +43,14 @@ const deleteCard = (id) => {
     .catch((error) => console.log("deleteError: ", error));
 };
 
-export { GetLists, PostNewList, deleteCard };
+const addNewTask = (id, newTask) => {
+  // console.log("nt", id);
+  axios
+    .put(`${apiBase}/list/add/${id}`, {
+      task: newTask,
+    })
+    .then((response) => console.log("PR", response))
+    .catch((error) => console.log("editError: ", error));
+};
+
+export { GetLists, PostNewList, deleteCard, addNewTask };
