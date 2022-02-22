@@ -1,16 +1,18 @@
 import React, { useState } from "react";
+import { deleteCard } from "../helpers/api";
 
 import CardForm from "./CardForm";
 import TaskForm from "./TaskForm";
 import { ReactComponent as CloseOutlineIcon } from "../images/close-outline.svg";
 
-function TaskCard({ listData, setListData, list, listName, cardIndex }) {
-  console.log("h", listData);
+function TaskCard({ listData, setListData, list, listName, cardIndex, id }) {
+  console.log("h", listData, "id", id);
   // const [checked, setChecked] = useState({});
 
-  const cancelList = (i) => {
+  const cancelList = (i, id) => {
+    deleteCard(id);
     const newListData = [...listData];
-    const newCard = newListData.filter((task) => task !== listData[i]);
+    const newCard = newListData.filter((task) => task._id !== id);
     setListData((prev) => newCard);
   };
 
@@ -44,7 +46,7 @@ function TaskCard({ listData, setListData, list, listName, cardIndex }) {
         <CloseOutlineIcon
           className="cancel-icon"
           onClick={() => {
-            cancelList(cardIndex);
+            cancelList(cardIndex, id);
           }}
         />
       </div>
