@@ -97,7 +97,11 @@ function App() {
           </form>
         </div>
       )}
-      <Tasks listData={listData} setListData={setListData} />
+      <Tasks
+        listData={listData}
+        setListData={setListData}
+        setRender={setRender}
+      />
       {/* <TaskCard /> */}
     </div>
   );

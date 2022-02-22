@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ReactComponent as AddSolidIcon } from "../images/add-solid.svg";
 import { addNewTask } from "../helpers/api";
 
-function CardForm({ listData, setListData, cardIndex, id }) {
+function CardForm({ listData, setListData, cardIndex, id, setRender }) {
   const [newTask, setNewTask] = useState();
   const [addTask, setAddTask] = useState(false);
 
@@ -19,6 +19,7 @@ function CardForm({ listData, setListData, cardIndex, id }) {
     }
 
     addNewTask(id, newTask);
+    // setRender(true);
 
     const newListData = [...listData];
     newListData[cardIndex].list.push({

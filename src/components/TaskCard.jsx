@@ -5,8 +5,16 @@ import CardForm from "./CardForm";
 import TaskForm from "./TaskForm";
 import { ReactComponent as CloseOutlineIcon } from "../images/close-outline.svg";
 
-function TaskCard({ listData, setListData, list, listName, cardIndex, id }) {
-  console.log("h", listData, "id", id);
+function TaskCard({
+  listData,
+  setListData,
+  list,
+  listName,
+  cardIndex,
+  id,
+  setRender,
+}) {
+  // console.log("h", listData, "id", id);
   // const [checked, setChecked] = useState({});
 
   const cancelList = (i, id) => {
@@ -66,6 +74,7 @@ function TaskCard({ listData, setListData, list, listName, cardIndex, id }) {
         setListData={setListData}
         cardIndex={cardIndex}
         id={id}
+        setRender={setRender}
       />
     </div>
   );
