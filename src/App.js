@@ -1,24 +1,56 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Tasks from "./components/Tasks";
 import TaskCard from "./components/TaskCard";
 import "./index.css";
 import AddInput from "./components/AddInput";
 import { ReactComponent as AddSolidIcon } from "./images/add-solid.svg";
 
+const apiBase = "http://127.0.0.1:3001";
+
 function App() {
   const [addListCard, setAddListCard] = useState(false);
   const [cardTitle, setCardTitle] = useState();
 
-  const [listData, setListData] = useState([
-    {
-      listName: "groceries",
-      list: [
-        { task: "tomatos", complete: "task-complete", checked: true },
-        { task: "bacon", complete: "task-complete", checked: true },
-        { task: "mushrooms", complete: "task-complete", checked: true },
-      ],
-    },
-  ]);
+  const [listData, setListData] = useState([]);
+
+  useEffect(() => {
+    GetLists();
+  }, []);
+
+  const GetLists = () => {
+    // fetch(`${apiBase}/lists`)
+    //   .then((res) => {
+    //     console.log("r", res);
+    //     res.json();
+    //   })
+    //   .then((data) => console.log("D", data))
+    //   .catch((error) => console.error("Error fetching: ", error));
+    axios(`${apiBase}/lists`)
+      .then((response) => {
+        setListData(response.data);
+      })
+      .catch((error) => console.log("Axios Error: ", error));
+  };
+
+  const PostNewList = () => {
+    axios
+      .post(
+        `${apiBase}/list/new`,
+        {
+          listName: cardTitle,
+        }
+        // {
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //   },
+        // }
+      )
+      .then((response) => console.log("PR", response))
+      .catch((error) => console.log("postError: ", error));
+  };
+
+  listData.length > 0 && console.log("data", listData);
 
   const toggleListForm = () => {
     addListCard ? setAddListCard(false) : setAddListCard(true);
@@ -32,6 +64,7 @@ function App() {
       return;
     }
 
+    PostNewList();
     setListData((prev) => [...prev, { listName: cardTitle, list: [] }]);
     setCardTitle("");
     toggleListForm();
