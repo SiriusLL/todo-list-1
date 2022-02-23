@@ -32,7 +32,7 @@ function TaskForm({ handleChecked, listData, setListData, cardIndex, id }) {
                     type="button"
                     onClick={() => {
                       console.log("ids", id, listData[cardIndex].list[i]._id);
-                      removeTask(id, listData[cardIndex].list[i]._id);
+                      removeTask(id, listData[cardIndex].list[i].taskId);
                       const newListData = [...listData];
                       const newList = newListData[cardIndex].list.filter(
                         (task) => task !== listData[cardIndex].list[i]

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { deleteCard } from "../helpers/api";
+import { deleteCard, completeTask } from "../helpers/api";
 
 import CardForm from "./CardForm";
 import TaskForm from "./TaskForm";
@@ -28,11 +28,20 @@ function TaskCard({
     const newListData = [...listData];
 
     if (e.target.checked) {
+      completeTask(
+        id,
+        newListData[cardIndex].list[i].taskId,
+        "task-complete",
+        true
+      );
+      // setRender(true);
       newListData[cardIndex].list[i].complete = "task-complete";
       newListData[cardIndex].list[i].checked = true;
       setListData((prev) => newListData);
       return;
     }
+    completeTask(id, newListData[cardIndex].list[i].taskId, "task", false);
+    // setRender(true);
     newListData[cardIndex].list[i].complete = "task";
     newListData[cardIndex].list[i].checked = false;
     setListData((prev) => newListData);

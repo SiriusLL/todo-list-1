@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ReactComponent as AddSolidIcon } from "../images/add-solid.svg";
 import { addNewTask } from "../helpers/api";
+const ObjectID = require("bson").ObjectId;
 
 function CardForm({ listData, setListData, cardIndex, id, setRender }) {
   const [newTask, setNewTask] = useState();
@@ -9,7 +10,6 @@ function CardForm({ listData, setListData, cardIndex, id, setRender }) {
   const toggleTaskForm = () => {
     addTask ? setAddTask(false) : setAddTask(true);
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -18,11 +18,14 @@ function CardForm({ listData, setListData, cardIndex, id, setRender }) {
       return;
     }
 
-    addNewTask(id, newTask);
+    const newTaskId = new ObjectID();
+    console.log("idddd", newTaskId.toString());
+    addNewTask(id, newTaskId, newTask);
     // setRender(true);
 
     const newListData = [...listData];
     newListData[cardIndex].list.push({
+      taskId: newTaskId.toString(),
       task: newTask,
       complete: "task",
       checked: false,

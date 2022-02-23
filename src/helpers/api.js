@@ -2,16 +2,9 @@ import axios from "axios";
 const apiBase = "http://127.0.0.1:3001";
 const ObjectID = require("bson").ObjectID;
 
-const listId = new ObjectID();
+// const listId = new ObjectID();
 
 const GetLists = (setListData) => {
-  // fetch(`${apiBase}/lists`)
-  //   .then((res) => {
-  //     console.log("r", res);
-  //     res.json();
-  //   })
-  //   .then((data) => console.log("D", data))
-  //   .catch((error) => console.error("Error fetching: ", error));
   axios(`${apiBase}/lists`)
     .then((response) => {
       setListData(response.data);
@@ -46,11 +39,11 @@ const deleteCard = (id) => {
     .catch((error) => console.log("deleteError: ", error));
 };
 
-const addNewTask = (id, newTask) => {
+const addNewTask = (id, newTaskId, newTask) => {
   // console.log("nt", id);
   axios
-    .put(`${apiBase}/list/add/${id}`, {
-      id: listId,
+    .put(`${apiBase}/list/add/${id}/${newTaskId}`, {
+      taskId: newTaskId,
       task: newTask,
     })
     .then((response) => console.log("PR", response))
@@ -58,7 +51,26 @@ const addNewTask = (id, newTask) => {
 };
 
 const removeTask = (listId, taskId) => {
-  axios.delete(`${apiBase}/list/remove/${listId}/${taskId}`);
+  console.log(listId, taskId);
+  axios.put(`${apiBase}/list/remove/${listId}/${taskId}`);
 };
 
-export { GetLists, PostNewList, deleteCard, addNewTask, removeTask };
+const completeTask = (id, taskId, complete, checked) => {
+  console.log("id", id, taskId, complete, checked);
+  axios
+    .put(`${apiBase}/list/complete/${id}/${taskId}`, {
+      complete,
+      checked,
+    })
+    .then((response) => console.log("PR", response))
+    .catch((error) => console.log("editError: ", error));
+};
+
+export {
+  GetLists,
+  PostNewList,
+  deleteCard,
+  addNewTask,
+  removeTask,
+  completeTask,
+};
